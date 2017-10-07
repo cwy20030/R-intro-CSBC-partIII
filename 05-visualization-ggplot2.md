@@ -36,23 +36,6 @@ library(ggplot2)
 library(dplyr)
 ```
 
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
 ## Plotting with ggplot2
 
 `ggplot2` is a plotting package that makes it simple to create complex plots

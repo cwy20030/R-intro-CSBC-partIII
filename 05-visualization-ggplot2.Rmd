@@ -34,7 +34,7 @@ structured data.
 
 We start by loading the required packages.
 
-```{r, purl=FALSE}
+```{r, purl=FALSE, message=FALSE}
 library(ggplot2)
 library(dplyr)
 ```
