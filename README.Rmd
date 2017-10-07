@@ -1,4 +1,4 @@
-Last update: date()
+Last update: `r date()`
 
 # INT 3.5
 
