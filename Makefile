@@ -1,4 +1,5 @@
 all:
+	make README.md
 	make 02-starting-with-data.md
 	make 03-tidy-data.md
 	make 04-dplyr.md
