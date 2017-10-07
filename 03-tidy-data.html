@@ -459,7 +459,7 @@ gather(untidy, Treatment, Result, c(treatmenta,treatmentb))</code></pre>
 ## 1   John Smith          -          2
 ## 2     Jane Doe         16         11
 ## 3 Mary Johnson          3          1</code></pre>
-<pre class="r"><code>tidy &lt;- gather(untidy, Treatment, Result, c(treatmenta,treatmentb))</code></pre>
+<pre class="r"><code>tidyData &lt;- gather(untidy, Treatment, Result, c(treatmenta,treatmentb))</code></pre>
 <hr />
 </div>
 <div id="exercise-simulated-clinical-data" class="section level2">
@@ -496,9 +496,9 @@ messyData</code></pre>
 
 </div>
 <p><details></p>
-<pre class="r"><code>tidyData &lt;- gather(messyData, key = Treatment, value = Value,-Subject)
+<pre class="r"><code>tidyData &lt;- gather(messyData, key = Treatment, value = Value, -Subject)
 boxplot(tidyData$Value~tidyData$Treatment)</code></pre>
-<p></details></p>
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-11" /> </details></p>
 <hr />
 </div>
 <div id="other-useful-functions-in-tidyr" class="section level2">
@@ -511,7 +511,17 @@ boxplot(tidyData$Value~tidyData$Treatment)</code></pre>
 </ul></li>
 </ul>
 <pre class="r"><code>spread(tidyData, key = Treatment,value=Value)</code></pre>
-<pre><code>## Error in spread(tidyData, key = Treatment, value = Value): object 'tidyData' not found</code></pre>
+<pre><code>##      Subject Drug1.1 Drug1.2 Drug2.1 Drug2.2 Placebo.1 Placebo.2
+## 1   Patient1   48.42   48.37   40.80   38.28     49.84     53.79
+## 2  Patient10   44.86   50.07   39.01   36.22     46.97     44.76
+## 3   Patient2   49.65   41.62   39.14   41.89     46.75     49.77
+## 4   Patient3   40.49   49.15   40.32   35.10     48.70     48.11
+## 5   Patient4   38.27   41.10   40.74   41.15     51.68     48.14
+## 6   Patient5   43.10   39.37   43.29   34.86     48.91     48.30
+## 7   Patient6   47.50   42.88   39.48   35.60     53.54     44.71
+## 8   Patient7   49.24   46.42   37.40   38.77     53.56     46.99
+## 9   Patient8   47.31   38.32   43.99   33.75     46.15     43.23
+## 10  Patient9   43.36   48.63   41.61   34.38     50.52     56.24</code></pre>
 <ul>
 <li><code>separate</code> can be used to split column names that are comprised by two different parts with a common separating character. e.g. <code>Drug1.1</code>, <code>Drug1.2</code> etc.
 <ul>
@@ -519,8 +529,34 @@ boxplot(tidyData$Value~tidyData$Treatment)</code></pre>
 <li>we can explicitly say the separator being used. Apart from the <code>.</code> in our example other common values are <code>-</code>, <code>_</code>, <code>:</code>.</li>
 </ul></li>
 </ul>
-<pre class="r"><code>separate(tidyData, &quot;Treatment&quot;,into=c(&quot;Treatment&quot;,&quot;Replicate&quot;))</code></pre>
-<pre><code>## Error in separate(tidyData, &quot;Treatment&quot;, into = c(&quot;Treatment&quot;, &quot;Replicate&quot;)): object 'tidyData' not found</code></pre>
+<pre class="r"><code>separate(tidyData, &quot;Treatment&quot;, into = c(&quot;Treatment&quot;, &quot;Replicate&quot;))</code></pre>
+<pre><code>##      Subject Treatment Replicate Value
+## 1   Patient1   Placebo         1 49.84
+## 2   Patient2   Placebo         1 46.75
+## 3   Patient3   Placebo         1 48.70
+## 4   Patient4   Placebo         1 51.68
+## 5   Patient5   Placebo         1 48.91
+## 6   Patient6   Placebo         1 53.54
+## 7   Patient7   Placebo         1 53.56
+## 8   Patient8   Placebo         1 46.15
+## 9   Patient9   Placebo         1 50.52
+## 10 Patient10   Placebo         1 46.97
+## 11  Patient1   Placebo         2 53.79
+## 12  Patient2   Placebo         2 49.77
+## 13  Patient3   Placebo         2 48.11
+## 14  Patient4   Placebo         2 48.14
+## 15  Patient5   Placebo         2 48.30
+## 16  Patient6   Placebo         2 44.71
+## 17  Patient7   Placebo         2 46.99
+## 18  Patient8   Placebo         2 43.23
+## 19  Patient9   Placebo         2 56.24
+## 20 Patient10   Placebo         2 44.76
+## 21  Patient1     Drug1         1 48.42
+## 22  Patient2     Drug1         1 49.65
+## 23  Patient3     Drug1         1 40.49
+## 24  Patient4     Drug1         1 38.27
+## 25  Patient5     Drug1         1 43.10
+##  [ reached getOption(&quot;max.print&quot;) -- omitted 35 rows ]</code></pre>
 </div>
 </div>
 

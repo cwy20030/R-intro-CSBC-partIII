@@ -158,7 +158,7 @@ Note that after all these operations, the original data frame (`untidy`) is unal
 
 ```{r warning=FALSE}
 untidy
-tidy <- gather(untidy, Treatment, Result, c(treatmenta,treatmentb))
+tidyData <- gather(untidy, Treatment, Result, c(treatmenta,treatmentb))
 ```
 
 ******
@@ -185,8 +185,8 @@ messyData
 
 <details>
 
-```{r, eval=FALSE}
-tidyData <- gather(messyData, key = Treatment, value = Value,-Subject)
+```{r}
+tidyData <- gather(messyData, key = Treatment, value = Value, -Subject)
 boxplot(tidyData$Value~tidyData$Treatment)
 ```
 </details>
@@ -209,5 +209,5 @@ spread(tidyData, key = Treatment,value=Value)
     + we can explicitly say the separator being used. Apart from the `.` in our example other common values are `-`, `_`, `:`.
 
 ```{r}
-separate(tidyData, "Treatment",into=c("Treatment","Replicate"))
+separate(tidyData, "Treatment", into = c("Treatment", "Replicate"))
 ```

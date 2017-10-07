@@ -252,7 +252,7 @@ untidy
 ```
 
 ```r
-tidy <- gather(untidy, Treatment, Result, c(treatmenta,treatmentb))
+tidyData <- gather(untidy, Treatment, Result, c(treatmenta,treatmentb))
 ```
 
 ******
@@ -296,9 +296,11 @@ messyData
 
 
 ```r
-tidyData <- gather(messyData, key = Treatment, value = Value,-Subject)
+tidyData <- gather(messyData, key = Treatment, value = Value, -Subject)
 boxplot(tidyData$Value~tidyData$Treatment)
 ```
+
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png)
 </details>
 
 ******
@@ -316,7 +318,17 @@ spread(tidyData, key = Treatment,value=Value)
 ```
 
 ```
-## Error in spread(tidyData, key = Treatment, value = Value): object 'tidyData' not found
+##      Subject Drug1.1 Drug1.2 Drug2.1 Drug2.2 Placebo.1 Placebo.2
+## 1   Patient1   48.42   48.37   40.80   38.28     49.84     53.79
+## 2  Patient10   44.86   50.07   39.01   36.22     46.97     44.76
+## 3   Patient2   49.65   41.62   39.14   41.89     46.75     49.77
+## 4   Patient3   40.49   49.15   40.32   35.10     48.70     48.11
+## 5   Patient4   38.27   41.10   40.74   41.15     51.68     48.14
+## 6   Patient5   43.10   39.37   43.29   34.86     48.91     48.30
+## 7   Patient6   47.50   42.88   39.48   35.60     53.54     44.71
+## 8   Patient7   49.24   46.42   37.40   38.77     53.56     46.99
+## 9   Patient8   47.31   38.32   43.99   33.75     46.15     43.23
+## 10  Patient9   43.36   48.63   41.61   34.38     50.52     56.24
 ```
 
 - `separate` can be used to split column names that are comprised by two different parts with a common separating character. e.g. `Drug1.1`, `Drug1.2` etc.
@@ -325,9 +337,35 @@ spread(tidyData, key = Treatment,value=Value)
 
 
 ```r
-separate(tidyData, "Treatment",into=c("Treatment","Replicate"))
+separate(tidyData, "Treatment", into = c("Treatment", "Replicate"))
 ```
 
 ```
-## Error in separate(tidyData, "Treatment", into = c("Treatment", "Replicate")): object 'tidyData' not found
+##      Subject Treatment Replicate Value
+## 1   Patient1   Placebo         1 49.84
+## 2   Patient2   Placebo         1 46.75
+## 3   Patient3   Placebo         1 48.70
+## 4   Patient4   Placebo         1 51.68
+## 5   Patient5   Placebo         1 48.91
+## 6   Patient6   Placebo         1 53.54
+## 7   Patient7   Placebo         1 53.56
+## 8   Patient8   Placebo         1 46.15
+## 9   Patient9   Placebo         1 50.52
+## 10 Patient10   Placebo         1 46.97
+## 11  Patient1   Placebo         2 53.79
+## 12  Patient2   Placebo         2 49.77
+## 13  Patient3   Placebo         2 48.11
+## 14  Patient4   Placebo         2 48.14
+## 15  Patient5   Placebo         2 48.30
+## 16  Patient6   Placebo         2 44.71
+## 17  Patient7   Placebo         2 46.99
+## 18  Patient8   Placebo         2 43.23
+## 19  Patient9   Placebo         2 56.24
+## 20 Patient10   Placebo         2 44.76
+## 21  Patient1     Drug1         1 48.42
+## 22  Patient2     Drug1         1 49.65
+## 23  Patient3     Drug1         1 40.49
+## 24  Patient4     Drug1         1 38.27
+## 25  Patient5     Drug1         1 43.10
+##  [ reached getOption("max.print") -- omitted 35 rows ]
 ```
