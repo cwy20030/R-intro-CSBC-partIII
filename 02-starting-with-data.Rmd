@@ -20,7 +20,7 @@ output:
 
 ## Presentation of the Survey Data
 
-```{r, echo=FALSE, purl=TRUE}
+```{r, echo=FALSE}
 ### Presentation of the survey data
 ```
 
@@ -50,14 +50,14 @@ load into memory the content of the CSV file as a `data.frame`.
 
 To download the data into the `data/` subdirectory, do:
 
-```{r, eval=FALSE, purl=TRUE}
+```{r, eval=FALSE}
 download.file("https://ndownloader.figshare.com/files/2292169",
               "data/portal_data_joined.csv")
 ```
 
 You are now ready to load the data:
 
-```{r, eval=TRUE,  purl=FALSE}
+```{r, eval=TRUE}
 surveys <- read.csv('data/portal_data_joined.csv')
 ```
 
@@ -69,7 +69,7 @@ Wow... that was a lot of output. At least it means the data loaded
 properly. Let's check the top (the first 6 lines) of this `data.frame` using the
 function `head()`:
 
-```{r, results='show', purl=FALSE}
+```{r}
 head(surveys)
 ```
 
@@ -78,7 +78,7 @@ columns are vectors that all have the same length. Because the column are
 vectors, they all contain the same type of data. We can see this when inspecting
 the __str__ucture of a `data.frame` with the function `str()`:
 
-```{r, purl=FALSE}
+```{r}
 str(surveys)
 ```
 
@@ -92,7 +92,7 @@ Based on the output of `str(surveys)`, can you answer the following questions?
 
 
 <details>
-```{r}
+```{r, eval=TRUE}
 class(surveys)
 dim(surveys)
 str(surveys$species_id)
@@ -107,7 +107,7 @@ useful but not necessarily intuitive, and therefore require some attention.
 
 ## Factors
 
-```{r, echo=FALSE, purl=TRUE}
+```{r, echo=FALSE}
 ### Factors
 ```
 
@@ -124,7 +124,7 @@ Once created, factors can only contain a pre-defined set of values, known as
 *levels*. By default, R always sorts *levels* in alphabetical order. For
 instance, if you have a factor with 2 levels:
 
-```{r, purl=TRUE}
+```{r}
 sex <- factor(c("male", "female", "female", "male"))
 ```
 
@@ -133,7 +133,7 @@ R will assign `1` to the level `"female"` and `2` to the level `"male"` (because
 `"male"`). You can check this by using the function `levels()`, and check the
 number of levels using `nlevels()`:
 
-```{r, purl=FALSE}
+```{r}
 levels(sex)
 nlevels(sex)
 ```
@@ -171,7 +171,7 @@ levels) to a numeric vector is a little trickier.  One method is to convert
 factors to characters and then numbers.  Another method is to use the `levels()`
 function. Compare:
 
-```{r, purl=TRUE}
+```{r}
 f <- factor(c(1, 5, 10, 2))
 as.numeric(f)               ## wrong! and there is no warning...
 as.numeric(as.character(f)) ## works...
@@ -197,7 +197,7 @@ below.
 of first?
 
 
-```{r wrong-order, results='show', echo=FALSE, purl=TRUE}
+```{r wrong-order}
 ## The function `plot()` can be used to quickly create a bar plot of a factor.
 ## For instance, for a factor
 exprmt <- factor(c("treat1", "treat2", "treat1", "treat3", "treat1",
