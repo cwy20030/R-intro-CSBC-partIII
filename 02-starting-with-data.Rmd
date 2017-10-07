@@ -90,23 +90,12 @@ Based on the output of `str(surveys)`, can you answer the following questions?
 * How many rows and how many columns are in this object?
 * How many species have been recorded during these surveys?
 
-```{r, echo=FALSE, purl=TRUE}
-
-## Challenge
-## Based on the output of `str(surveys)`, can you answer the following questions?
-## * What is the class of the object `surveys`?
-## * How many rows and how many columns are in this object?
-## * How many species have been recorded during these surveys?
-
-```
 
 <details>
-```{r, echo=FALSE, purl=FALSE}
-## Answers
-##
-## * class: data frame
-## * how many rows: 34786,  how many columns: 13
-## * how many species: 48
+```{r}
+class(surveys)
+dim(surveys)
+str(surveys$species_id)
 ```
 </details>
 

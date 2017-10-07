@@ -344,6 +344,12 @@ div.tocify {
 <li>How many species have been recorded during these surveys?</li>
 </ul>
 <p><details></p>
+<pre class="r"><code>class(surveys)</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<pre class="r"><code>dim(surveys)</code></pre>
+<pre><code>## [1] 34786    13</code></pre>
+<pre class="r"><code>str(surveys$species_id)</code></pre>
+<pre><code>##  Factor w/ 48 levels &quot;AB&quot;,&quot;AH&quot;,&quot;AS&quot;,..: 16 16 16 16 16 16 16 16 16 16 ...</code></pre>
 <p></details></p>
 <p>As you can see, many of the columns consist of integers, however, the columns <code>species</code> and <code>sex</code> are of a special class called a <code>factor</code>. Before we learn more about the <code>data.frame</code> class, let’s talk about factors. They are very useful but not necessarily intuitive, and therefore require some attention.</p>
 </div>

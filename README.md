@@ -7,7 +7,7 @@
 
 - [The `portal` data](https://rawgit.com/lgatto/R-intro-CSBC-partIII/master/02-starting-with-data.html) (from
   [Data Carpentry](http://www.datacarpentry.org/R-ecology-lesson/))
-- [Tidy data](https://github.com/lgatto/R-intro-CSBC-partIII/blob/master/03-tidy-data.html) (From
+- [Tidy data](https://rawgit.com/lgatto/R-intro-CSBC-partIII/master/03-tidy-data.html) (From
   [An intermediate R course](https://bioinformatics-core-shared-training.github.io/r-intermediate/))
 - [Manipulating data with `dplyr`](https://github.com/lgatto/R-intro-CSBC-partIII/blob/master/04-dplyr.html) (from
   [Data Carpentry](http://www.datacarpentry.org/R-ecology-lesson/))

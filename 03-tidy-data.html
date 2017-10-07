@@ -397,12 +397,12 @@ anova(mod)</code></pre>
 </tbody>
 </table>
 <p>We can read these data from the file <code>tidyr-example.txt</code></p>
-<pre class="r"><code>untidy &lt;- read.delim(&quot;tidyr-example.txt&quot;)</code></pre>
-<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file 'tidyr-example.txt': No such
-## file or directory</code></pre>
-<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
-<pre class="r"><code>untidy</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object 'untidy' not found</code></pre>
+<pre class="r"><code>untidy &lt;- read.delim(&quot;./data/tidyr-example.txt&quot;)
+untidy</code></pre>
+<pre><code>##           Name treatmenta treatmentb
+## 1   John Smith          -          2
+## 2     Jane Doe         16         11
+## 3 Mary Johnson          3          1</code></pre>
 </div>
 <div id="using-tidyr-to-tidy-a-dataset" class="section level2">
 <h2>Using tidyr to tidy a dataset</h2>
@@ -423,23 +423,43 @@ anova(mod)</code></pre>
 </ul>
 <pre class="r"><code>library(tidyr)
 gather(untidy, Treatment, Result, c(treatmenta,treatmentb))</code></pre>
-<pre><code>## Error in gather(untidy, Treatment, Result, c(treatmenta, treatmentb)): object 'untidy' not found</code></pre>
+<pre><code>##           Name  Treatment Result
+## 1   John Smith treatmenta      -
+## 2     Jane Doe treatmenta     16
+## 3 Mary Johnson treatmenta      3
+## 4   John Smith treatmentb      2
+## 5     Jane Doe treatmentb     11
+## 6 Mary Johnson treatmentb      1</code></pre>
 <p>(<em>Ideally, the <code>Treatment</code> column should just be <code>a</code> or <code>b</code>, but we’ll see how to change this later-on</em>)</p>
 <p>When specifying columns, an alternative is to ignore some column names</p>
 <pre class="r"><code>gather(untidy, Treatment, Result, -Name)</code></pre>
-<pre><code>## Error in gather(untidy, Treatment, Result, -Name): object 'untidy' not found</code></pre>
+<pre><code>##           Name  Treatment Result
+## 1   John Smith treatmenta      -
+## 2     Jane Doe treatmenta     16
+## 3 Mary Johnson treatmenta      3
+## 4   John Smith treatmentb      2
+## 5     Jane Doe treatmentb     11
+## 6 Mary Johnson treatmentb      1</code></pre>
 <p>Can also specify column index</p>
 <pre class="r"><code>gather(untidy, Treatment, Result, 2:3)</code></pre>
-<pre><code>## Error in gather(untidy, Treatment, Result, 2:3): object 'untidy' not found</code></pre>
+<pre><code>##           Name  Treatment Result
+## 1   John Smith treatmenta      -
+## 2     Jane Doe treatmenta     16
+## 3 Mary Johnson treatmenta      3
+## 4   John Smith treatmentb      2
+## 5     Jane Doe treatmentb     11
+## 6 Mary Johnson treatmentb      1</code></pre>
 <p>Note that after all these operations, the original data frame (<code>untidy</code>) is unaltered</p>
 <ul>
 <li>we need to create a new variable to save the result</li>
 <li>you should never work directly on the raw data</li>
 </ul>
 <pre class="r"><code>untidy</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object 'untidy' not found</code></pre>
+<pre><code>##           Name treatmenta treatmentb
+## 1   John Smith          -          2
+## 2     Jane Doe         16         11
+## 3 Mary Johnson          3          1</code></pre>
 <pre class="r"><code>tidy &lt;- gather(untidy, Treatment, Result, c(treatmenta,treatmentb))</code></pre>
-<pre><code>## Error in gather(untidy, Treatment, Result, c(treatmenta, treatmentb)): object 'untidy' not found</code></pre>
 <hr />
 </div>
 <div id="exercise-simulated-clinical-data" class="section level2">
@@ -453,10 +473,19 @@ gather(untidy, Treatment, Result, c(treatmenta,treatmentb))</code></pre>
 <li>Some kind of measurement was performed to assess the effect of the drug</li>
 <li>Overall question is the effect of the treatment</li>
 </ul>
-<pre class="r"><code>messyData &lt;- read.delim(&quot;clinicalData.txt&quot;)</code></pre>
-<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
-<pre class="r"><code>messyData</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object 'messyData' not found</code></pre>
+<pre class="r"><code>messyData &lt;- read.delim(&quot;./data/clinicalData.txt&quot;)
+messyData</code></pre>
+<pre><code>##      Subject Placebo.1 Placebo.2 Drug1.1 Drug1.2 Drug2.1 Drug2.2
+## 1   Patient1     49.84     53.79   48.42   48.37   40.80   38.28
+## 2   Patient2     46.75     49.77   49.65   41.62   39.14   41.89
+## 3   Patient3     48.70     48.11   40.49   49.15   40.32   35.10
+## 4   Patient4     51.68     48.14   38.27   41.10   40.74   41.15
+## 5   Patient5     48.91     48.30   43.10   39.37   43.29   34.86
+## 6   Patient6     53.54     44.71   47.50   42.88   39.48   35.60
+## 7   Patient7     53.56     46.99   49.24   46.42   37.40   38.77
+## 8   Patient8     46.15     43.23   47.31   38.32   43.99   33.75
+## 9   Patient9     50.52     56.24   43.36   48.63   41.61   34.38
+## 10 Patient10     46.97     44.76   44.86   50.07   39.01   36.22</code></pre>
 <ul>
 <li>What variables and observations do we have?</li>
 <li>What might a ‘tidy’ version of the dataset look like?</li>

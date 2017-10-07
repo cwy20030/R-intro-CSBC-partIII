@@ -127,9 +127,31 @@ Based on the output of `str(surveys)`, can you answer the following questions?
 * How many species have been recorded during these surveys?
 
 
-
 <details>
 
+```r
+class(surveys)
+```
+
+```
+## [1] "data.frame"
+```
+
+```r
+dim(surveys)
+```
+
+```
+## [1] 34786    13
+```
+
+```r
+str(surveys$species_id)
+```
+
+```
+##  Factor w/ 48 levels "AB","AH","AS",..: 16 16 16 16 16 16 16 16 16 16 ...
+```
 </details>
 
 As you can see, many of the columns consist of integers, however, the columns

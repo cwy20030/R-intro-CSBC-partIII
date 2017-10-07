@@ -154,24 +154,15 @@ We can read these data from the file `tidyr-example.txt`
 
 
 ```r
-untidy <- read.delim("tidyr-example.txt")
-```
-
-```
-## Warning in file(file, "rt"): cannot open file 'tidyr-example.txt': No such
-## file or directory
-```
-
-```
-## Error in file(file, "rt"): cannot open the connection
-```
-
-```r
+untidy <- read.delim("./data/tidyr-example.txt")
 untidy
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'untidy' not found
+##           Name treatmenta treatmentb
+## 1   John Smith          -          2
+## 2     Jane Doe         16         11
+## 3 Mary Johnson          3          1
 ```
 
 
@@ -198,7 +189,13 @@ gather(untidy, Treatment, Result, c(treatmenta,treatmentb))
 ```
 
 ```
-## Error in gather(untidy, Treatment, Result, c(treatmenta, treatmentb)): object 'untidy' not found
+##           Name  Treatment Result
+## 1   John Smith treatmenta      -
+## 2     Jane Doe treatmenta     16
+## 3 Mary Johnson treatmenta      3
+## 4   John Smith treatmentb      2
+## 5     Jane Doe treatmentb     11
+## 6 Mary Johnson treatmentb      1
 ```
 
 (*Ideally, the `Treatment` column should just be `a` or `b`, but we'll see how to change this later-on*)
@@ -211,7 +208,13 @@ gather(untidy, Treatment, Result, -Name)
 ```
 
 ```
-## Error in gather(untidy, Treatment, Result, -Name): object 'untidy' not found
+##           Name  Treatment Result
+## 1   John Smith treatmenta      -
+## 2     Jane Doe treatmenta     16
+## 3 Mary Johnson treatmenta      3
+## 4   John Smith treatmentb      2
+## 5     Jane Doe treatmentb     11
+## 6 Mary Johnson treatmentb      1
 ```
 
 Can also specify column index
@@ -222,7 +225,13 @@ gather(untidy, Treatment, Result, 2:3)
 ```
 
 ```
-## Error in gather(untidy, Treatment, Result, 2:3): object 'untidy' not found
+##           Name  Treatment Result
+## 1   John Smith treatmenta      -
+## 2     Jane Doe treatmenta     16
+## 3 Mary Johnson treatmenta      3
+## 4   John Smith treatmentb      2
+## 5     Jane Doe treatmentb     11
+## 6 Mary Johnson treatmentb      1
 ```
 
 Note that after all these operations, the original data frame (`untidy`) is unaltered
@@ -236,15 +245,14 @@ untidy
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'untidy' not found
+##           Name treatmenta treatmentb
+## 1   John Smith          -          2
+## 2     Jane Doe         16         11
+## 3 Mary Johnson          3          1
 ```
 
 ```r
 tidy <- gather(untidy, Treatment, Result, c(treatmenta,treatmentb))
-```
-
-```
-## Error in gather(untidy, Treatment, Result, c(treatmenta, treatmentb)): object 'untidy' not found
 ```
 
 ******
@@ -260,19 +268,22 @@ Lets read some typical data from a clinical trial.
 
 
 ```r
-messyData <- read.delim("clinicalData.txt")
-```
-
-```
-## Error in file(file, "rt"): cannot open the connection
-```
-
-```r
+messyData <- read.delim("./data/clinicalData.txt")
 messyData
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'messyData' not found
+##      Subject Placebo.1 Placebo.2 Drug1.1 Drug1.2 Drug2.1 Drug2.2
+## 1   Patient1     49.84     53.79   48.42   48.37   40.80   38.28
+## 2   Patient2     46.75     49.77   49.65   41.62   39.14   41.89
+## 3   Patient3     48.70     48.11   40.49   49.15   40.32   35.10
+## 4   Patient4     51.68     48.14   38.27   41.10   40.74   41.15
+## 5   Patient5     48.91     48.30   43.10   39.37   43.29   34.86
+## 6   Patient6     53.54     44.71   47.50   42.88   39.48   35.60
+## 7   Patient7     53.56     46.99   49.24   46.42   37.40   38.77
+## 8   Patient8     46.15     43.23   47.31   38.32   43.99   33.75
+## 9   Patient9     50.52     56.24   43.36   48.63   41.61   34.38
+## 10 Patient10     46.97     44.76   44.86   50.07   39.01   36.22
 ```
 
 - What variables and observations do we have?
@@ -281,14 +292,13 @@ messyData
 
 ![](images/tidy-boxplot.png)
 
-<details>  
+<details>
 
 
 ```r
 tidyData <- gather(messyData, key = Treatment, value = Value,-Subject)
 boxplot(tidyData$Value~tidyData$Treatment)
 ```
-
 </details>
 
 ******

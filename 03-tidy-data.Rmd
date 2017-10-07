@@ -111,7 +111,7 @@ Mary Johnson  |    b       |    1
 We can read these data from the file `tidyr-example.txt`
 
 ```{r}
-untidy <- read.delim("tidyr-example.txt")
+untidy <- read.delim("./data/tidyr-example.txt")
 untidy
 ```
 
@@ -173,7 +173,7 @@ Lets read some typical data from a clinical trial.
 - Overall question is the effect of the treatment 
 
 ```{r,warning=FALSE}
-messyData <- read.delim("clinicalData.txt")
+messyData <- read.delim("./data/clinicalData.txt")
 messyData
 ```
 
@@ -183,13 +183,12 @@ messyData
 
 ![](images/tidy-boxplot.png)
 
-<details>  
+<details>
 
 ```{r, eval=FALSE}
 tidyData <- gather(messyData, key = Treatment, value = Value,-Subject)
 boxplot(tidyData$Value~tidyData$Treatment)
 ```
-
 </details>
 
 ******
