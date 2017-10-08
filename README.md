@@ -1,8 +1,9 @@
-Last update: Sun Oct  8 13:25:24 2017
 
 # Introduction to R
 
 Systems Biology part III, University of Cambridge, 2017 - 2018
+
+Last course material update: Sun Oct  8 13:26:26 2017
 
 ## INT 3.5
 
