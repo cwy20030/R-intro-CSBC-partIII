@@ -1,9 +1,9 @@
 
 # Introduction to R
 
-Systems Biology part III, University of Cambridge, 2017 - 2018
-
-Last course material update: Sun Oct  8 13:26:26 2017
+- Systems Biology part III, University of Cambridge, 2017 - 2018
+- [Github repository](https://github.com/lgatto/R-intro-CSBC-partIII)
+- Last course material update: Sun Oct  8 13:31:08 2017
 
 ## INT 3.5
 
@@ -34,4 +34,5 @@ Last course material update: Sun Oct  8 13:26:26 2017
 ## Data
 
 All the datasets for the three modules are available in the `data`
-directory, as well as [here](./data/zip).
+directory of the GitHub repository, as well as
+[here](https://github.com/lgatto/R-intro-CSBC-partIII/blob/master/data.zip?raw=true).

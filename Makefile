@@ -1,5 +1,6 @@
 all:
-	make README.md
+	make README.html
+	mv README.html ./docs/index.html
 	make 02-starting-with-data.md
 	make 03-tidy-data.md
 	make 04-dplyr.md
