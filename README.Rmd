@@ -3,7 +3,8 @@
 
 - Systems Biology part III, University of Cambridge, 2017 - 2018
 - [Github repository](https://github.com/lgatto/R-intro-CSBC-partIII)
-- Last course material update: `r date()`
+- Last update: `r date()`
+- Contact: Laurent Gatto, by email of open an issue.
 
 ## INT 3.5
 
