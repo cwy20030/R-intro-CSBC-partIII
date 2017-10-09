@@ -25,12 +25,17 @@
 - [Manipulating data with `dplyr`](https://rawgit.com/lgatto/R-intro-CSBC-partIII/master/04-dplyr.html) (from
   [Data Carpentry](http://www.datacarpentry.org/R-ecology-lesson/))
 
-- [Data visualisation with `ggplot2`](https://rawgit.com/lgatto/R-intro-CSBC-partIII/master/05-visualization-ggplot2.html) (from
-  [Data Carpentry](http://www.datacarpentry.org/R-ecology-lesson/))
 
 ## INT 3.10
 
 2017-10-10 Tue
+
+- [Data visualisation with `ggplot2`](https://rawgit.com/lgatto/R-intro-CSBC-partIII/master/05-visualization-ggplot2.html) (from
+  [Data Carpentry](http://www.datacarpentry.org/R-ecology-lesson/))
+
+- [Joining tables](https://rawgit.com/lgatto/R-intro-CSBC-partIII/master/06-joining.html) (From
+  [An intermediate R course](https://bioinformatics-core-shared-training.github.io/r-intermediate/))
+
 
 ## Data
 

@@ -9,6 +9,7 @@ all:
 	make 03-tidy-data.html
 	make 04-dplyr.html
 	make 05-visualization-ggplot2.html
+	make 06-joining.html
 
 %.md: %.Rmd
 	Rscript -e "knitr::knit('$^')"
