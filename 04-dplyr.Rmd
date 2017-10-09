@@ -141,7 +141,7 @@ Note that the final data frame is the leftmost part of this expression.
 >  1995 and retain only the columns `year`, `sex`, and `weight`.
 
 <details>
-```{r, eval=FALSE, purl=FALSE}
+```{r}
 ## Answer
 surveys %>%
     filter(year < 1995) %>%
@@ -201,7 +201,7 @@ symbol negates the result, so we're asking for everything that *is not* an `NA`.
 
 
 <details>
-```{r, eval=FALSE, purl=FALSE}
+```{r}
 ## Answer
 surveys_hindfoot_half <- surveys %>%
     filter(!is.na(hindfoot_length)) %>%
@@ -248,7 +248,7 @@ Number"). To avoid this, we can remove the missing values for weight before we
 attempt to calculate the summary statistics on weight. Because the missing
 values are removed, we can omit `na.rm = TRUE` when computing the mean:
 
-```{r, purl = FALSE}
+```{r}
 surveys %>%
   filter(!is.na(weight)) %>%
   group_by(sex, species_id) %>%
@@ -264,7 +264,7 @@ only as many columns as fit on one screen. If you want to display more data, you
 use the `print()` function at the end of your chain with the argument `n`
 specifying the number of rows to display:
 
-```{r, purl = FALSE}
+```{r}
 surveys %>%
   filter(!is.na(weight)) %>%
   group_by(sex, species_id) %>%
@@ -317,7 +317,7 @@ counts the total number of records for each category.
 
 
 <details>
-```{r, echo=FALSE, purl=FALSE}
+```{r}
 ## Answer 1
 surveys %>%
     group_by(plot_type) %>%

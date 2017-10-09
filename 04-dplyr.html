@@ -339,6 +339,41 @@ surveys_sml</code></pre>
 surveys %&gt;%
     filter(year &lt; 1995) %&gt;%
     select(year, sex, weight)</code></pre>
+<pre><code>##       year sex weight
+## 1     1977   M     NA
+## 2     1977   M     NA
+## 3     1977         NA
+## 4     1977         NA
+## 5     1977         NA
+## 6     1977         NA
+## 7     1977         NA
+## 8     1978         NA
+## 9     1978   M    218
+## 10    1978         NA
+## 11    1978         NA
+## 12    1978   M    204
+## 13    1978   M    200
+## 14    1978   M    199
+## 15    1978   M    197
+## 16    1978         NA
+## 17    1978   M    218
+## 18    1979   M    166
+## 19    1979   M    184
+## 20    1979   M    206
+## 21    1979   F    274
+## 22    1979   F    186
+## 23    1980   F    184
+## 24    1980   F     NA
+## 25    1980   F     87
+## 26    1980   F    174
+## 27    1981   F    130
+## 28    1981   M    208
+## 29    1981   M    192
+## 30    1982   M    206
+## 31    1982   F    165
+## 32    1982   M    202
+## 33    1982   M    211
+##  [ reached getOption(&quot;max.print&quot;) -- omitted 21453 rows ]</code></pre>
 <p></details></p>
 <div id="mutate" class="section level3">
 <h3>Mutate</h3>
@@ -549,6 +584,10 @@ surveys_hindfoot_half &lt;- surveys %&gt;%
 </ol>
 </blockquote>
 <p><details></p>
+<pre class="r"><code>## Answer 1
+surveys %&gt;%
+    group_by(plot_type) %&gt;%
+    tally</code></pre>
 <pre><code>## # A tibble: 5 x 2
 ##                   plot_type     n
 ##                      &lt;fctr&gt; &lt;int&gt;
@@ -557,6 +596,15 @@ surveys_hindfoot_half &lt;- surveys %&gt;%
 ## 3          Rodent Exclosure  4233
 ## 4 Short-term Krat Exclosure  5906
 ## 5         Spectab exclosure  3918</code></pre>
+<pre class="r"><code>## Answer 2
+surveys %&gt;%
+    filter(!is.na(hindfoot_length)) %&gt;%
+    group_by(species_id) %&gt;%
+    summarize(
+        mean_hindfoot_length = mean(hindfoot_length),
+        min_hindfoot_length = min(hindfoot_length),
+        max_hindfoot_length = max(hindfoot_length)
+    )</code></pre>
 <pre><code>## # A tibble: 25 x 4
 ##    species_id mean_hindfoot_length min_hindfoot_length max_hindfoot_length
 ##        &lt;fctr&gt;                &lt;dbl&gt;               &lt;dbl&gt;               &lt;dbl&gt;
@@ -571,6 +619,13 @@ surveys_hindfoot_half &lt;- surveys %&gt;%
 ##  9         OX             19.12500                  13                  21
 ## 10         PB             26.11592                   2                  47
 ## # ... with 15 more rows</code></pre>
+<pre class="r"><code>## Answer 3
+surveys %&gt;%
+    filter(!is.na(weight)) %&gt;%
+    group_by(year) %&gt;%
+    filter(weight == max(weight)) %&gt;%
+    select(year, genus, species, weight) %&gt;%
+    arrange(year)</code></pre>
 <pre><code>## # A tibble: 27 x 4
 ## # Groups:   year [26]
 ##     year     genus     species weight
@@ -586,6 +641,10 @@ surveys_hindfoot_half &lt;- surveys %&gt;%
 ##  9  1984   Neotoma    albigula    259
 ## 10  1985   Neotoma    albigula    225
 ## # ... with 17 more rows</code></pre>
+<pre class="r"><code>## Answer 4
+surveys %&gt;%
+  group_by(sex) %&gt;%
+  summarize(n = n())</code></pre>
 <pre><code>## # A tibble: 3 x 2
 ##      sex     n
 ##   &lt;fctr&gt; &lt;int&gt;
