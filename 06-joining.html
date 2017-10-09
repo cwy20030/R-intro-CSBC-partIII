@@ -358,36 +358,21 @@ left_join(df1, df2, by = c(&quot;forename&quot;, &quot;surname&quot;))</code></p
 <div id="filtering-joins" class="section level3">
 <h3>Filtering joins</h3>
 <p>A variation on the join operations we’ve considered are <code>semi_join</code> and <code>anti_join</code> that filter the rows in one table based on matches or lack of matches to rows in another table.</p>
-<pre class="r"><code># semi_join returns all rows from the first table where there are matches in the other table
+<pre class="r"><code># semi_join returns all rows from the first table where there are
+# matches in the other table
 semi_join(band_members, band_instruments, by = &quot;name&quot;)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##    name    band
 ##   &lt;chr&gt;   &lt;chr&gt;
 ## 1  John Beatles
 ## 2  Paul Beatles</code></pre>
-<pre class="r"><code># anti_join returns all rows where there is no match in the other table
+<pre class="r"><code># anti_join returns all rows where there is no match in the other
+# table
 anti_join(band_members, band_instruments, by = &quot;name&quot;)</code></pre>
 <pre><code>## # A tibble: 1 x 2
 ##    name   band
 ##   &lt;chr&gt;  &lt;chr&gt;
 ## 1  Mick Stones</code></pre>
-</div>
-<div id="exercise-rmarkdown-template" class="section level2">
-<h2>Exercise: <a href="4.summarise-and-combine-exercises.Rmd">Rmarkdown Template</a></h2>
-<p>The exercise uses a more realistic dataset, building on the patients data frame we’ve already been working with.</p>
-<p>The patients are all part of a diabetes study and have had their blood glucose concentration and diastolic blood pressure measured on several dates.</p>
-<pre class="r"><code>diabetes &lt;- read.delim(&quot;diabetes.txt&quot;, stringsAsFactors = FALSE)</code></pre>
-<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file 'diabetes.txt': No such file
-## or directory</code></pre>
-<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
-<pre class="r"><code>diabetes</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object 'diabetes' not found</code></pre>
-<ul>
-<li>Compare the average blood pressures of smokers and non-smokers
-<ul>
-<li>First calculate the average blood pressure measurement for each patient then combine with the smoking attribute in the <code>patients</code> data frame</li>
-</ul></li>
-</ul>
 </div>
 </div>
 
