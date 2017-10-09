@@ -584,8 +584,9 @@ counts the total number of records for each category.
 > 2. Use `group_by()` and `summarize()` to find the mean, min, and max hindfoot
 > length for each species (using `species_id`).
 >
-> 3. What was the heaviest animal measured in each year? Return the columns `year`,
-> `genus`, `species_id`, and `weight`.
+> 3. What was the heaviest animal measured in each year? Return the
+> columns `year`, `genus`, `species_id`, and `weight`. Optional: order
+> by descending year using `arrange` and `desc`.
 >
 > 4. You saw above how to count the number of individuals of each `sex` using a
 > combination of `group_by()` and `tally()`. How could you get the same result
@@ -648,24 +649,24 @@ surveys %>%
     group_by(year) %>%
     filter(weight == max(weight)) %>%
     select(year, genus, species, weight) %>%
-    arrange(year)
+    arrange(desc(year))
 ```
 
 ```
 ## # A tibble: 27 x 4
 ## # Groups:   year [26]
-##     year     genus     species weight
-##    <int>    <fctr>      <fctr>  <int>
-##  1  1977 Dipodomys spectabilis    149
-##  2  1978   Neotoma    albigula    232
-##  3  1978   Neotoma    albigula    232
-##  4  1979   Neotoma    albigula    274
-##  5  1980   Neotoma    albigula    243
-##  6  1981   Neotoma    albigula    264
-##  7  1982   Neotoma    albigula    252
-##  8  1983   Neotoma    albigula    256
-##  9  1984   Neotoma    albigula    259
-## 10  1985   Neotoma    albigula    225
+##     year   genus  species weight
+##    <int>  <fctr>   <fctr>  <int>
+##  1  2002 Neotoma albigula    248
+##  2  2001 Neotoma albigula    280
+##  3  2000 Neotoma albigula    265
+##  4  1999 Neotoma albigula    227
+##  5  1998 Neotoma albigula    238
+##  6  1997 Neotoma albigula    231
+##  7  1996 Neotoma albigula    185
+##  8  1995 Neotoma albigula    171
+##  9  1994 Neotoma albigula    226
+## 10  1993 Neotoma albigula    233
 ## # ... with 17 more rows
 ```
 
