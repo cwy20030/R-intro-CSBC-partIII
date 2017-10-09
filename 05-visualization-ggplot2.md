@@ -36,6 +36,23 @@ library(ggplot2)
 library(dplyr)
 ```
 
+We are going to first filter any missing values from the surveys data
+and use the `surveys_complete` data in the rest of this document.
+
+
+```r
+survey <- read.csv("./data/portal_data_joined.csv")
+surveys_complete <- surveys %>%
+  filter(species_id != "",         # remove missing species_id
+         !is.na(weight),           # remove missing weight
+         !is.na(hindfoot_length),  # remove missing hindfoot_length
+         sex != "")                # remove missing sex
+```
+
+```
+## Error in eval(lhs, parent, parent): object 'surveys' not found
+```
+
 ## Plotting with ggplot2
 
 `ggplot2` is a plotting package that makes it simple to create complex plots
