@@ -41,16 +41,12 @@ and use the `surveys_complete` data in the rest of this document.
 
 
 ```r
-survey <- read.csv("./data/portal_data_joined.csv")
+surveys <- read.csv("./data/portal_data_joined.csv")
 surveys_complete <- surveys %>%
   filter(species_id != "",         # remove missing species_id
          !is.na(weight),           # remove missing weight
          !is.na(hindfoot_length),  # remove missing hindfoot_length
          sex != "")                # remove missing sex
-```
-
-```
-## Error in eval(lhs, parent, parent): object 'surveys' not found
 ```
 
 ## Plotting with ggplot2
@@ -283,6 +279,11 @@ ggplot(data = yearly_counts, aes(x = year, y = n, group = species_id, colour = s
     facet_wrap(~ species_id)
 ```
 
+```
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+```
+
 ![plot of chunk first-facet](figure/first-facet-1.png)
 
 Now we would like to split line in each plot by sex of each individual
@@ -305,6 +306,11 @@ We can now make the faceted plot splitting further by sex (within a single plot)
      facet_wrap(~ species_id)
 ```
 
+```
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+```
+
 ![plot of chunk facet-by-species-and-sex](figure/facet-by-species-and-sex-1.png)
 
 Usually plots with white background look more readable when printed.  We can set
@@ -323,6 +329,11 @@ the grid.
 	   panel.grid.minor.y = element_blank())
 ```
 
+```
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+```
+
 ![plot of chunk facet-by-species-and-sex-white-bg](figure/facet-by-species-and-sex-white-bg-1.png)
 
 To make the plot easier to read, we can color by sex instead of species (species
@@ -334,6 +345,11 @@ ggplot(data = yearly_sex_counts, aes(x = year, y = n, color = sex, group = sex))
     geom_line() +
     facet_wrap(~ species_id) +
     theme_bw()
+```
+
+```
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
 ```
 
 ![plot of chunk facet-by-species-and-sex-colored](figure/facet-by-species-and-sex-colored-1.png)
@@ -354,6 +370,11 @@ ggplot(data = yearly_weight, aes(x=year, y=avg_weight, color = species_id, group
     geom_line() +
     facet_wrap(~ species_id) +
     theme_bw()
+```
+
+```
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
 ```
 
 ![plot of chunk average-weight-timeseries](figure/average-weight-timeseries-1.png)
@@ -412,6 +433,11 @@ ggplot(data = yearly_sex_counts, aes(x = year, y = n, color = sex, group = sex))
     theme_bw()
 ```
 
+```
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+```
+
 ![plot of chunk number_species_year_with_right_labels](figure/number_species_year_with_right_labels-1.png)
 
 The axes have more informative names, but their readability can be improved by
@@ -427,6 +453,11 @@ ggplot(data = yearly_sex_counts, aes(x = year, y = n, color = sex, group = sex))
         y = 'Number of species') +
     theme_bw() +
     theme(text=element_text(size=16, family="Arial"))
+```
+
+```
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
 ```
 
 ![plot of chunk number_species_year_with_right_labels_xfont_size](figure/number_species_year_with_right_labels_xfont_size-1.png)
@@ -449,6 +480,11 @@ ggplot(data = yearly_sex_counts, aes(x = year, y = n, color = sex, group = sex))
     theme(axis.text.x = element_text(colour="grey20", size=12, angle=90, hjust=.5, vjust=.5),
                         axis.text.y = element_text(colour="grey20", size=12),
           text=element_text(size=16, family="Arial"))
+```
+
+```
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
 ```
 
 ![plot of chunk number_species_year_with_theme](figure/number_species_year_with_theme-1.png)
