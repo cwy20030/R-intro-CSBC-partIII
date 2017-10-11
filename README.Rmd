@@ -37,8 +37,7 @@
   [An intermediate R course](https://bioinformatics-core-shared-training.github.io/r-intermediate/))
 
 - Brief hands-on overview of unsupervised machine learning - full
-  content
-  [here](https://rawgit.com/lgatto/IntroMachineLearningWithR/master/20-uml.html).
+  content: http://bit.ly/intromlr
 
 ## Data
 
